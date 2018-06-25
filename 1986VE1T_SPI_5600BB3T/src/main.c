@@ -8,7 +8,7 @@
 
 #define MASTER_MODE 1 
 
-MAC_StringTypeDef MAC_Table[2048]; // Массив структур
+MAC_StringTypeDef MAC_Table[2048]; // РњР°СЃСЃРёРІ СЃС‚СЂСѓРєС‚СѓСЂ
 MAC_StringTypeDef MAC_String;
 MAC_StringTypeDef MAC_String1;
 
@@ -29,16 +29,16 @@ int main(void)
 	MAC_String.VALID = 0x1;
 	MAC_String.PORT_NUM = 0x2;
 
-	TXRX_Data(pBRD_SPIx, AGE_CONTROL_0, WRITE, 0x6F); // Отключение удаления записей из MAC-таблицы при достижении счётчиком старения значения 0xFFF
+	TXRX_Data(pBRD_SPIx, AGE_CONTROL_0, WRITE, 0x6F); // РћС‚РєР»СЋС‡РµРЅРёРµ СѓРґР°Р»РµРЅРёСЏ Р·Р°РїРёСЃРµР№ РёР· MAC-С‚Р°Р±Р»РёС†С‹ РїСЂРё РґРѕСЃС‚РёР¶РµРЅРёРё СЃС‡С‘С‚С‡РёРєРѕРј СЃС‚Р°СЂРµРЅРёСЏ Р·РЅР°С‡РµРЅРёСЏ 0xFFF
 	
-	Write_MAC_String(pBRD_SPIx, Get_Addr(MAC_String, 0x5), &MAC_String); // Запись строки в MAC таблицу
+	Write_MAC_String(pBRD_SPIx, Get_Addr(MAC_String, 0x5), &MAC_String); // Р—Р°РїРёСЃСЊ СЃС‚СЂРѕРєРё РІ MAC С‚Р°Р±Р»РёС†Сѓ
 	
-	Read_MAC_String(pBRD_SPIx, Get_Addr(MAC_String, 0x5), &MAC_String1); // Чтение строки из MAC таблицы
+	Read_MAC_String(pBRD_SPIx, Get_Addr(MAC_String, 0x5), &MAC_String1); // Р§С‚РµРЅРёРµ СЃС‚СЂРѕРєРё РёР· MAC С‚Р°Р±Р»РёС†С‹
 	
-	Read_MAC_Table(pBRD_SPIx, MAC_Table); // Чтение всей MAC-таблицы
+	Read_MAC_Table(pBRD_SPIx, MAC_Table); // Р§С‚РµРЅРёРµ РІСЃРµР№ MAC-С‚Р°Р±Р»РёС†С‹
 	
 	
-	for(i=0;i<2048;i++) // Определение адресов строк с активными записями
+	for(i=0;i<2048;i++) // РћРїСЂРµРґРµР»РµРЅРёРµ Р°РґСЂРµСЃРѕРІ СЃС‚СЂРѕРє СЃ Р°РєС‚РёРІРЅС‹РјРё Р·Р°РїРёСЃСЏРјРё
 	{
 		if(MAC_Table[i].VALID != 0)
 		{

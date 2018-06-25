@@ -14,16 +14,16 @@ void Read_MAC_Table(BRD_SPI_Obj* BRD_SPI, MAC_StringTypeDef* MAC_String)
 	uint32_t i, j;
 	for(i=0;i<2048;i++)
 	{
-		TXRX_Data(BRD_SPI, RAM_CONTROL_1, WRITE, i&0xFF); 									 // Установка младшей части адреса
-		TXRX_Data(BRD_SPI, RAM_CONTROL_0, WRITE, ((i>>8)&0x7)|0x80); 				 // Установка старшей части адреса + запуск транзакции чтения из ОЗУ адресов
-		while((TXRX_Data(BRD_SPI, RAM_CONTROL_0, READ, NO_DATA)&0x80) == 1); // Ожидание завершения транзакции
+		TXRX_Data(BRD_SPI, RAM_CONTROL_1, WRITE, i&0xFF); 									 // РЈСЃС‚Р°РЅРѕРІРєР° РјР»Р°РґС€РµР№ С‡Р°СЃС‚Рё Р°РґСЂРµСЃР°
+		TXRX_Data(BRD_SPI, RAM_CONTROL_0, WRITE, ((i>>8)&0x7)|0x80); 				 // РЈСЃС‚Р°РЅРѕРІРєР° СЃС‚Р°СЂС€РµР№ С‡Р°СЃС‚Рё Р°РґСЂРµСЃР° + Р·Р°РїСѓСЃРє С‚СЂР°РЅР·Р°РєС†РёРё С‡С‚РµРЅРёСЏ РёР· РћР—РЈ Р°РґСЂРµСЃРѕРІ
+		while((TXRX_Data(BRD_SPI, RAM_CONTROL_0, READ, NO_DATA)&0x80) == 1); // РћР¶РёРґР°РЅРёРµ Р·Р°РІРµСЂС€РµРЅРёСЏ С‚СЂР°РЅР·Р°РєС†РёРё
 		
-	for(j = 0;j < 6;j++) 																							     // Запись MAC адреса в структуру
+	for(j = 0;j < 6;j++) 																							     // Р—Р°РїРёСЃСЊ MAC Р°РґСЂРµСЃР° РІ СЃС‚СЂСѓРєС‚СѓСЂСѓ
 	{
 		MAC_String[i].data |= (uint64_t) TXRX_Data(BRD_SPI, RAM_DATA6-j, READ, NO_DATA)<<8*j;
 	}
 	
-		for(j = 6;j < 8;j++) 																							   // Запись оставшихся байт в структуру
+		for(j = 6;j < 8;j++) 																							   // Р—Р°РїРёСЃСЊ РѕСЃС‚Р°РІС€РёС…СЃСЏ Р±Р°Р№С‚ РІ СЃС‚СЂСѓРєС‚СѓСЂСѓ
 	{
 		MAC_String[i].data |= (uint64_t) TXRX_Data(BRD_SPI, RAM_DATA1+j, READ, NO_DATA)<<8*j;
 	}
@@ -33,16 +33,16 @@ void Read_MAC_Table(BRD_SPI_Obj* BRD_SPI, MAC_StringTypeDef* MAC_String)
 void Read_MAC_String(BRD_SPI_Obj* BRD_SPI, uint16_t addr, MAC_StringTypeDef* MAC_String)
 {
 	uint32_t j;
-	TXRX_Data(BRD_SPI, RAM_CONTROL_1, WRITE, addr&0xFF); 								 // Установка младшей части адреса
-	TXRX_Data(BRD_SPI, RAM_CONTROL_0, WRITE, ((addr>>8)&0x7)|0x80);      // Установка старшей части адреса + запуск транзакции чтения из ОЗУ адресов
-	while((TXRX_Data(BRD_SPI, RAM_CONTROL_0, READ, NO_DATA)&0x80) == 1); // Ожидание завершения транзакции
+	TXRX_Data(BRD_SPI, RAM_CONTROL_1, WRITE, addr&0xFF); 								 // РЈСЃС‚Р°РЅРѕРІРєР° РјР»Р°РґС€РµР№ С‡Р°СЃС‚Рё Р°РґСЂРµСЃР°
+	TXRX_Data(BRD_SPI, RAM_CONTROL_0, WRITE, ((addr>>8)&0x7)|0x80);      // РЈСЃС‚Р°РЅРѕРІРєР° СЃС‚Р°СЂС€РµР№ С‡Р°СЃС‚Рё Р°РґСЂРµСЃР° + Р·Р°РїСѓСЃРє С‚СЂР°РЅР·Р°РєС†РёРё С‡С‚РµРЅРёСЏ РёР· РћР—РЈ Р°РґСЂРµСЃРѕРІ
+	while((TXRX_Data(BRD_SPI, RAM_CONTROL_0, READ, NO_DATA)&0x80) == 1); // РћР¶РёРґР°РЅРёРµ Р·Р°РІРµСЂС€РµРЅРёСЏ С‚СЂР°РЅР·Р°РєС†РёРё
 	
-	for(j = 0;j < 6;j++) 																							   // Запись MAC адреса в структуру
+	for(j = 0;j < 6;j++) 																							   // Р—Р°РїРёСЃСЊ MAC Р°РґСЂРµСЃР° РІ СЃС‚СЂСѓРєС‚СѓСЂСѓ
 	{
 		MAC_String->data |= (uint64_t) TXRX_Data(BRD_SPI, RAM_DATA6-j, READ, NO_DATA)<<8*j;
 	}
 	
-		for(j = 6;j < 8;j++) 																							   // Запись оставшихся байт в структуру
+		for(j = 6;j < 8;j++) 																							   // Р—Р°РїРёСЃСЊ РѕСЃС‚Р°РІС€РёС…СЃСЏ Р±Р°Р№С‚ РІ СЃС‚СЂСѓРєС‚СѓСЂСѓ
 	{
 		MAC_String->data |= (uint64_t) TXRX_Data(BRD_SPI, RAM_DATA1+j, READ, NO_DATA)<<8*j;
 	}
@@ -52,19 +52,19 @@ void Write_MAC_String(BRD_SPI_Obj* BRD_SPI, uint16_t addr, MAC_StringTypeDef* MA
 {
 	uint32_t j;
 
-	for(j = 0;j < 6;j++)  																				       // Запись MAC адреса в регистры 5600ВВ3Т
+	for(j = 0;j < 6;j++)  																				       // Р—Р°РїРёСЃСЊ MAC Р°РґСЂРµСЃР° РІ СЂРµРіРёСЃС‚СЂС‹ 5600Р’Р’3Рў
 	{
 		TXRX_Data(BRD_SPI, RAM_DATA1+j, WRITE, MAC_String->data>>(40-8*j));
 	}	
 	
-	for(j = 6;j < 8;j++)  																				       // Запись оставшихся байт в регистры 5600ВВ3Т
+	for(j = 6;j < 8;j++)  																				       // Р—Р°РїРёСЃСЊ РѕСЃС‚Р°РІС€РёС…СЃСЏ Р±Р°Р№С‚ РІ СЂРµРіРёСЃС‚СЂС‹ 5600Р’Р’3Рў
 	{
 		TXRX_Data(BRD_SPI, RAM_DATA1+j, WRITE, MAC_String->data>>8*j);
 	}	
 	
-	TXRX_Data(BRD_SPI, RAM_CONTROL_1, WRITE, addr&0xFF); 								 // Установка младшей части адреса
-	TXRX_Data(BRD_SPI, RAM_CONTROL_0, WRITE, ((addr>>8)&0x7)|0xC0);			 // Установка старшей части адреса + запуск транзакции записи ОЗУ адресов
-	while((TXRX_Data(BRD_SPI, RAM_CONTROL_0, READ, NO_DATA)&0x80) == 1); // Ожидание завершения транзакции
+	TXRX_Data(BRD_SPI, RAM_CONTROL_1, WRITE, addr&0xFF); 								 // РЈСЃС‚Р°РЅРѕРІРєР° РјР»Р°РґС€РµР№ С‡Р°СЃС‚Рё Р°РґСЂРµСЃР°
+	TXRX_Data(BRD_SPI, RAM_CONTROL_0, WRITE, ((addr>>8)&0x7)|0xC0);			 // РЈСЃС‚Р°РЅРѕРІРєР° СЃС‚Р°СЂС€РµР№ С‡Р°СЃС‚Рё Р°РґСЂРµСЃР° + Р·Р°РїСѓСЃРє С‚СЂР°РЅР·Р°РєС†РёРё Р·Р°РїРёСЃРё РћР—РЈ Р°РґСЂРµСЃРѕРІ
+	while((TXRX_Data(BRD_SPI, RAM_CONTROL_0, READ, NO_DATA)&0x80) == 1); // РћР¶РёРґР°РЅРёРµ Р·Р°РІРµСЂС€РµРЅРёСЏ С‚СЂР°РЅР·Р°РєС†РёРё
 }
 
 uint16_t Get_Addr(MAC_StringTypeDef MAC_String, uint8_t NCell)
@@ -79,18 +79,18 @@ uint16_t Get_Addr(MAC_StringTypeDef MAC_String, uint8_t NCell)
 }
 
 
-// Функции, не учитывающие побайтовую перестановку MAC адреса при операциях
+// Р¤СѓРЅРєС†РёРё, РЅРµ СѓС‡РёС‚С‹РІР°СЋС‰РёРµ РїРѕР±Р°Р№С‚РѕРІСѓСЋ РїРµСЂРµСЃС‚Р°РЅРѕРІРєСѓ MAC Р°РґСЂРµСЃР° РїСЂРё РѕРїРµСЂР°С†РёСЏС…
 
 void Read_MAC_Table_1(BRD_SPI_Obj* BRD_SPI, MAC_StringTypeDef* MAC_String)
 {
 	uint32_t i, j;
 	for(i=0;i<2048;i++)
 	{
-		TXRX_Data(BRD_SPI, RAM_CONTROL_1, WRITE, i&0xFF); 									 // Установка младшей части адреса
-		TXRX_Data(BRD_SPI, RAM_CONTROL_0, WRITE, ((i>>8)&0x7)|0x80); 				 // Установка старшей части адреса + запуск транзакции чтения из ОЗУ адресов
-		while((TXRX_Data(BRD_SPI, RAM_CONTROL_0, READ, NO_DATA)&0x80) == 1); // Ожидание завершения транзакции
+		TXRX_Data(BRD_SPI, RAM_CONTROL_1, WRITE, i&0xFF); 									 // РЈСЃС‚Р°РЅРѕРІРєР° РјР»Р°РґС€РµР№ С‡Р°СЃС‚Рё Р°РґСЂРµСЃР°
+		TXRX_Data(BRD_SPI, RAM_CONTROL_0, WRITE, ((i>>8)&0x7)|0x80); 				 // РЈСЃС‚Р°РЅРѕРІРєР° СЃС‚Р°СЂС€РµР№ С‡Р°СЃС‚Рё Р°РґСЂРµСЃР° + Р·Р°РїСѓСЃРє С‚СЂР°РЅР·Р°РєС†РёРё С‡С‚РµРЅРёСЏ РёР· РћР—РЈ Р°РґСЂРµСЃРѕРІ
+		while((TXRX_Data(BRD_SPI, RAM_CONTROL_0, READ, NO_DATA)&0x80) == 1); // РћР¶РёРґР°РЅРёРµ Р·Р°РІРµСЂС€РµРЅРёСЏ С‚СЂР°РЅР·Р°РєС†РёРё
 		
-		for(j = 0;j < 8;j++) 																							   // Запись всех байт в структуру
+		for(j = 0;j < 8;j++) 																							   // Р—Р°РїРёСЃСЊ РІСЃРµС… Р±Р°Р№С‚ РІ СЃС‚СЂСѓРєС‚СѓСЂСѓ
 	{
 		MAC_String[i].data |= (uint64_t) TXRX_Data(BRD_SPI, RAM_DATA1+j, READ, NO_DATA)<<8*j;
 	}
@@ -100,11 +100,11 @@ void Read_MAC_Table_1(BRD_SPI_Obj* BRD_SPI, MAC_StringTypeDef* MAC_String)
 void Read_MAC_String_1(BRD_SPI_Obj* BRD_SPI, uint16_t addr, MAC_StringTypeDef* MAC_String)
 {
 	uint32_t j;
-	TXRX_Data(BRD_SPI, RAM_CONTROL_1, WRITE, addr&0xFF); 								 // Установка младшей части адреса
-	TXRX_Data(BRD_SPI, RAM_CONTROL_0, WRITE, ((addr>>8)&0x7)|0x80);      // Установка старшей части адреса + запуск транзакции чтения из ОЗУ адресов
-	while((TXRX_Data(BRD_SPI, RAM_CONTROL_0, READ, NO_DATA)&0x80) == 1); // Ожидание завершения транзакции
+	TXRX_Data(BRD_SPI, RAM_CONTROL_1, WRITE, addr&0xFF); 								 // РЈСЃС‚Р°РЅРѕРІРєР° РјР»Р°РґС€РµР№ С‡Р°СЃС‚Рё Р°РґСЂРµСЃР°
+	TXRX_Data(BRD_SPI, RAM_CONTROL_0, WRITE, ((addr>>8)&0x7)|0x80);      // РЈСЃС‚Р°РЅРѕРІРєР° СЃС‚Р°СЂС€РµР№ С‡Р°СЃС‚Рё Р°РґСЂРµСЃР° + Р·Р°РїСѓСЃРє С‚СЂР°РЅР·Р°РєС†РёРё С‡С‚РµРЅРёСЏ РёР· РћР—РЈ Р°РґСЂРµСЃРѕРІ
+	while((TXRX_Data(BRD_SPI, RAM_CONTROL_0, READ, NO_DATA)&0x80) == 1); // РћР¶РёРґР°РЅРёРµ Р·Р°РІРµСЂС€РµРЅРёСЏ С‚СЂР°РЅР·Р°РєС†РёРё
 	
-	for(j = 0;j < 8;j++) 																							   // Запись всех байт в структуру
+	for(j = 0;j < 8;j++) 																							   // Р—Р°РїРёСЃСЊ РІСЃРµС… Р±Р°Р№С‚ РІ СЃС‚СЂСѓРєС‚СѓСЂСѓ
 	{
 		MAC_String->data |= (uint64_t) TXRX_Data(BRD_SPI, RAM_DATA1+j, READ, NO_DATA)<<8*j;
 	}
@@ -114,14 +114,14 @@ void Write_MAC_String_1(BRD_SPI_Obj* BRD_SPI, uint16_t addr, MAC_StringTypeDef* 
 {
 	uint32_t j;
 
-	for(j = 0;j < 8;j++)  																				       // Запись всех байт в регистры 5600ВВ3Т
+	for(j = 0;j < 8;j++)  																				       // Р—Р°РїРёСЃСЊ РІСЃРµС… Р±Р°Р№С‚ РІ СЂРµРіРёСЃС‚СЂС‹ 5600Р’Р’3Рў
 	{
 		TXRX_Data(BRD_SPI, RAM_DATA1+j, WRITE, MAC_String->data>>8*j);
 	}	
 	
-	TXRX_Data(BRD_SPI, RAM_CONTROL_1, WRITE, addr&0xFF); 								 // Установка младшей части адреса
-	TXRX_Data(BRD_SPI, RAM_CONTROL_0, WRITE, ((addr>>8)&0x7)|0xC0);			 // Установка старшей части адреса + запуск транзакции записи ОЗУ адресов
-	while((TXRX_Data(BRD_SPI, RAM_CONTROL_0, READ, NO_DATA)&0x80) == 1); // Ожидание завершения транзакции
+	TXRX_Data(BRD_SPI, RAM_CONTROL_1, WRITE, addr&0xFF); 								 // РЈСЃС‚Р°РЅРѕРІРєР° РјР»Р°РґС€РµР№ С‡Р°СЃС‚Рё Р°РґСЂРµСЃР°
+	TXRX_Data(BRD_SPI, RAM_CONTROL_0, WRITE, ((addr>>8)&0x7)|0xC0);			 // РЈСЃС‚Р°РЅРѕРІРєР° СЃС‚Р°СЂС€РµР№ С‡Р°СЃС‚Рё Р°РґСЂРµСЃР° + Р·Р°РїСѓСЃРє С‚СЂР°РЅР·Р°РєС†РёРё Р·Р°РїРёСЃРё РћР—РЈ Р°РґСЂРµСЃРѕРІ
+	while((TXRX_Data(BRD_SPI, RAM_CONTROL_0, READ, NO_DATA)&0x80) == 1); // РћР¶РёРґР°РЅРёРµ Р·Р°РІРµСЂС€РµРЅРёСЏ С‚СЂР°РЅР·Р°РєС†РёРё
 }
 
 
