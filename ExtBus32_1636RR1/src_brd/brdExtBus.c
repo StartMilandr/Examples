@@ -17,7 +17,7 @@ void BRD_ExtBus_Init (void)
 	EBC_DeInit();
 	EBC_StructInit(&EBC_InitStruct);
   EBC_InitStruct.EBC_Mode       = EBC_MODE_RAM;
-	EBC_InitStruct.EBC_WaitState  = EBC_WAIT_STATE_3HCLK;
+	EBC_InitStruct.EBC_WaitState  = EBC_WAIT_STATE_3HCLK; // EBC_WAIT_STATE_17HCLK;
 	EBC_Init(&EBC_InitStruct);
   
 #ifdef USE_BOARD_VE_1  
@@ -39,7 +39,7 @@ void BRD_ExtBus_InitPins_A20_D32 (void)
   //  Stuct Init by default
   PORT_StructInit(&PortInitStruc);
   PortInitStruc.PORT_MODE = PORT_MODE_DIGITAL;
-  PortInitStruc.PORT_SPEED = PORT_SPEED_FAST;	
+  PortInitStruc.PORT_SPEED = PORT_SPEED_FAST;
 
   //  DATA PINs Init
   PortInitStruc.PORT_Pin  = BRD_EBC_DATA_PORT_LO16_PINS;
@@ -50,7 +50,7 @@ void BRD_ExtBus_InitPins_A20_D32 (void)
 	PortInitStruc.PORT_FUNC = BRD_EBC_DATA_PORT_HI16_FUNC;
   PORT_Init(BRD_EBC_DATA_PORT_HI16, &PortInitStruc);	  
 
-  //  ADDR PINs Init  
+  //  ADDR PINs Init
   PortInitStruc.PORT_Pin  = BRD_EBC_PORT_ADDR20_PINS;
 	PortInitStruc.PORT_FUNC = BRD_EBC_PORT_ADDR20_FUNC;
   PORT_Init(BRD_EBC_PORT_ADDR20, &PortInitStruc);	  

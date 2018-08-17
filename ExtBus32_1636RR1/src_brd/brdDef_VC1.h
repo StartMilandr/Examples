@@ -117,6 +117,49 @@
     #define BRD_SDIO_INIT_FUNC_2         PORT_FUNC_MAIN
     #define BRD_SDIO_INIT_PULLUP_2       PORT_PULL_UP_OFF    
 
+//  ---------------  ExtBUS Definition ----------------
+    //  Data: [PA0 .. PA15] = [D0 .. D15]    
+    #define BRD_EBC_DATA_PORT_LO8         MDR_PORTA
+    #define BRD_EBC_DATA_PORT_LO8_CLK     RST_CLK_PCLK_PORTA
+    #define BRD_EBC_DATA_PORT_LO8_PINS    (PORT_Pin_0 | PORT_Pin_1 | PORT_Pin_2 | PORT_Pin_3  | PORT_Pin_4  | PORT_Pin_5 | PORT_Pin_6 | PORT_Pin_7)
+    #define BRD_EBC_DATA_PORT_LO8_FUNC    PORT_FUNC_MAIN
+
+    //  Data: [PA0 .. PA15] = [D0 .. D15]    
+    #define BRD_EBC_DATA_PORT_LO16        MDR_PORTA
+    #define BRD_EBC_DATA_PORT_LO16_CLK    RST_CLK_PCLK_PORTA
+    #define BRD_EBC_DATA_PORT_LO16_PINS   PORT_Pin_All
+    #define BRD_EBC_DATA_PORT_LO16_FUNC   PORT_FUNC_MAIN
+
+    //  Data: [PB0 .. PB15] = [D16 .. D31]
+    #define BRD_EBC_DATA_PORT_HI16        MDR_PORTB
+    #define BRD_EBC_DATA_PORT_HI16_CLK    RST_CLK_PCLK_PORTB
+    #define BRD_EBC_DATA_PORT_HI16_PINS   PORT_Pin_All
+    #define BRD_EBC_DATA_PORT_HI16_FUNC   PORT_FUNC_MAIN   
+
+    //  Ctrl: PC1 - OE, PC2 - WE, [PC3 .. PC6] = [BE0 - BE3]
+    #define BRD_EBC_PORT_CTRL             MDR_PORTC
+    #define BRD_EBC_PORT_CTRL_CLK         RST_CLK_PCLK_PORTC
+    #define BRD_EBC_PORT_CTRL_PINS        (PORT_Pin_1 | PORT_Pin_2 | PORT_Pin_3 | PORT_Pin_4 | PORT_Pin_5 | PORT_Pin_6)
+    #define BRD_EBC_PORT_CTRL_FUNC        PORT_FUNC_MAIN
+
+    //  Addr: [PF0 .. PF15] = [A0 - A15]    
+    #define BRD_EBC_PORT_ADDR20           MDR_PORTF
+    #define BRD_EBC_PORT_ADDR20_CLK       RST_CLK_PCLK_PORTF
+    #define BRD_EBC_PORT_ADDR20_PINS      PORT_Pin_All
+    #define BRD_EBC_PORT_ADDR20_FUNC      PORT_FUNC_MAIN
+
+    //  Addr: [PE0 .. RE3] = [A16 .. A19]
+    #define BRD_EBC_PORT_ADDR20_1_USED
+    #define BRD_EBC_PORT_ADDR20_1         MDR_PORTE
+    #define BRD_EBC_PORT_ADDR20_1_CLK     RST_CLK_PCLK_PORTE
+    #define BRD_EBC_PORT_ADDR20_1_PINS    (PORT_Pin_0 | PORT_Pin_1 | PORT_Pin_2 | PORT_Pin_3)
+    #define BRD_EBC_PORT_ADDR20_1_FUNC    PORT_FUNC_MAIN
+
+    #define BRD_EBC_START_ADDR	    0x10000000
+    #define BRD_EBC_A20_D32_CLK     (BRD_EBC_DATA_PORT_LO8_CLK | BRD_EBC_DATA_PORT_LO16_CLK | BRD_EBC_DATA_PORT_HI16_CLK | BRD_EBC_PORT_CTRL_CLK | BRD_EBC_PORT_ADDR20_CLK | BRD_EBC_PORT_ADDR20_1_CLK)
+
+
+
 #else
    Please, select board in brdSelect.h!
 

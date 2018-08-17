@@ -43,22 +43,59 @@ TestResult TestFlashSector(uint32_t sectorInd);
 
 void LedShowCycle(uint32_t period);
 
+
+TestResult res = resComError;
+TestTask   task = noTask;
+
+void While_Test_1636RR_VC1(void);
+void While_Test_1636RR(void);
+
 int main()
 {
-	TestResult res = resComError;
-	TestTask   task = noTask;
-	
-
   BRD_Clock_Init_HSE_dir();
 
-  BRD_LEDs_Init();
-	BRD_BTNs_Init();
-	
+
+#ifdef USE_BOARD_VC1
 	BRD_ExtBus_InitPins_A20_D32();
 	BRD_ExtBus_Init();
+  
+  While_Test_1636RR_VC1();
+#else  
+  // Пины используются внешней шиной - тест только в отладчике
+  BRD_LEDs_Init();
+	BRD_BTNs_Init();
+  
+	BRD_ExtBus_InitPins_A20_D32();
+	BRD_ExtBus_Init();  
+  
+  While_Test_1636RR();
+#endif
 
+}
+
+void While_Test_1636RR_VC1(void)
+{
+  while(1)
+  {
+    //	Perform test
+    if (task != noTask)
+    {				
+      // Perform test
+      if (task == testFlashFull)
+        res = TestFlashFull();
+      else
+        res = TestFlashBySect();
+      task = noTask;
+  }
+  }
+}
+
+void While_Test_1636RR(void)
+{
 	while (1)
 	{	
+// Пины используются внешней шиной
+    
 		//	SELECT btn runs EraseFull
 		if (BRD_Is_BntAct_Select())
 		{
@@ -76,7 +113,7 @@ int main()
 			if (task == noTask)
 				task = testFlashBySect;				
 		}				
-		
+    
 		//	Perform test
 		if (task != noTask)
 		{	

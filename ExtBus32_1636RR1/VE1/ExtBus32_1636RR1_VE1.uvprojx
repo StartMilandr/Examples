@@ -88,7 +88,7 @@
             <nStopA1X>0</nStopA1X>
             <nStopA2X>0</nStopA2X>
           </AfterMake>
-          <SelectedForBatchBuild>0</SelectedForBatchBuild>
+          <SelectedForBatchBuild>1</SelectedForBatchBuild>
           <SVCSIdString></SVCSIdString>
         </TargetCommonOption>
         <CommonProperty>
@@ -400,14 +400,14 @@
               <FilePath>..\src_brd\brdExtBus.c</FilePath>
             </File>
             <File>
-              <FileName>brdFlash_ExtBus.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\src_brd\brdFlash_ExtBus.c</FilePath>
-            </File>
-            <File>
               <FileName>brdLed.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\src_brd\brdLed.c</FilePath>
+            </File>
+            <File>
+              <FileName>brdFlash_ExtBus.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src_brd\brdFlash_ExtBus.c</FilePath>
             </File>
           </Files>
         </Group>
