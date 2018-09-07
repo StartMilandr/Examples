@@ -13,7 +13,7 @@
 // Данные D0-D1 совмещены с выводами MODE и эти выводы (три бита) при проверке на стертость возвращают 0
 // Хотя при вторичном считывании читались 1
 // При внесении емкости щупом осциллографа на вывод D0 сбои пропадали.
-// Вторая плата работает сразу, в первой видимы где-то плохой контакт.
+// Вторая плата работает сразу, в первой видимо где-то плохой контакт.
 // Опция оставлена для возможности отладки в будущем, по умолчанию выключена.
 #define USE_VE1_BRD_FIX  0
 
@@ -59,6 +59,9 @@ int main()
 	BRD_ExtBus_InitPins_A20_D32();
 	BRD_ExtBus_Init();
   
+  //  Используется для подачи сигнала nCE = 0 на микросхемы 1636РР1У. A[30] PE14 - для 1901ВЦ1.
+  BRD_ExtBus_Init_1636RR1_nCE();  
+  
   While_Test_1636RR_VC1();
 #else  
   // Пины используются внешней шиной - тест только в отладчике
@@ -67,6 +70,9 @@ int main()
   
 	BRD_ExtBus_InitPins_A20_D32();
 	BRD_ExtBus_Init();  
+
+  //  Используется для подачи сигнала nCE = 0 на микросхемы 1636РР1У. A[30] PE14 - для 1986ВЕ91, A[22] PE8 - для 986ВЕ1Т
+  BRD_ExtBus_Init_1636RR1_nCE();
   
   While_Test_1636RR();
 #endif
@@ -93,9 +99,7 @@ void While_Test_1636RR_VC1(void)
 void While_Test_1636RR(void)
 {
 	while (1)
-	{	
-// Пины используются внешней шиной
-    
+	{	  
 		//	SELECT btn runs EraseFull
 		if (BRD_Is_BntAct_Select())
 		{
@@ -106,9 +110,9 @@ void While_Test_1636RR(void)
 		}		
 		
 		//	UP btn runs EraseFull
-		if (BRD_Is_BntAct_Up())
+		if (BRD_Is_BntAct_Down())
 		{
-			while (BRD_Is_BntAct_Up()) {};
+			while (BRD_Is_BntAct_Down()) {};
 				
 			if (task == noTask)
 				task = testFlashBySect;				

@@ -154,11 +154,6 @@
     #define BRD_EBC_START_ADDR	    0x50000000
     #define BRD_EBC_REGION          EBC_MEM_REGION_50000000
 
-//  ----------    ExtBUS 1636RR1 board nCE Control - [A22] -------------
-    #define BRD_EBC_RR1_nCE_CLOCK             RST_CLK_PCLK_PORTE
-    #define BRD_EBC_RR1_nCE_PORT              MDR_PORTE
-    #define BRD_EBC_RR1_nCE_PIN               PORT_Pin_8
-    #define BRD_EBC_RR1_nCE_FUNC              PORT_FUNC_ALTER
                                   
 //  ----------    LCD Definition -------------
     #define BRD_LCD_E1_PORT     MDR_PORTE

@@ -1,4 +1,5 @@
 #include <MDR32F9Qx_port.h>
+#include <MDR32F9Qx_rst_clk.h>
 
 #include "brdFlash_ExtBus.h"
 #include "brdUtils.h"
@@ -202,4 +203,23 @@ FlashStatus EraseFLASHSector(uint32_t SectorInd)
 	
 	return result;		
 }
+
+void BRD_ExtBus_Init_1636RR1_nCE (void)
+{	
+	PORT_InitTypeDef PortInitStruc;	
+	
+  //  Clock to PORTs
+	RST_CLK_PCLKcmd(BRD_EBC_RR1_nCE_CLOCK, ENABLE);
+	
+  //  Stuct Init by default
+  PORT_StructInit(&PortInitStruc);
+  PortInitStruc.PORT_MODE = PORT_MODE_DIGITAL;
+  PortInitStruc.PORT_SPEED = PORT_SPEED_FAST;
+
+  //  DATA PINs Init
+  PortInitStruc.PORT_Pin  = BRD_EBC_RR1_nCE_PIN;
+	PortInitStruc.PORT_FUNC = BRD_EBC_RR1_nCE_FUNC;
+  PORT_Init(BRD_EBC_RR1_nCE_PORT, &PortInitStruc);
+}
+
 
