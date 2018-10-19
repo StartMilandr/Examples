@@ -16,6 +16,7 @@
 /* Адреса регистров мсх 5600ВВ3Т */
 #define CONTROL (uint8_t) 0x01
 #define STATUS (uint8_t) 0x02
+#define FD_MODE5 (uint8_t) 0x03
 #define PHY_MODES_12 (uint8_t) 0x04
 #define PHY_MODES_34 (uint8_t) 0x0B
 
