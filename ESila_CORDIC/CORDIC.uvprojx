@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>.;env</IncludePath>
+              <IncludePath>.\env</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -386,11 +386,6 @@
               <FileName>startup.s</FileName>
               <FileType>2</FileType>
               <FilePath>.\startup.s</FilePath>
-            </File>
-            <File>
-              <FileName>Abstract.txt</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Abstract.txt</FilePath>
             </File>
             <File>
               <FileName>CORDIC.c</FileName>
@@ -739,7 +734,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>.;env</IncludePath>
+              <IncludePath>.\env</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -787,11 +782,6 @@
               <FileName>startup.s</FileName>
               <FileType>2</FileType>
               <FilePath>.\startup.s</FilePath>
-            </File>
-            <File>
-              <FileName>Abstract.txt</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Abstract.txt</FilePath>
             </File>
             <File>
               <FileName>CORDIC.c</FileName>

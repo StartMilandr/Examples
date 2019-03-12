@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath></IncludePath>
+              <IncludePath>.\env</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -730,7 +730,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath></IncludePath>
+              <IncludePath>.\env</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>

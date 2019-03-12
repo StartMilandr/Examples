@@ -21,8 +21,8 @@
  *-----------------------------------------------------------------------------
  */
 
-#ifndef __CM4IKMCU_H__
-#define __CM4IKMCU_H__
+#ifndef __MLDR124_H__
+#define __MLDR124_H__
 
 /*
  * ==========================================================================
@@ -33,189 +33,189 @@
 typedef enum IRQn
 {
 /******  Cortex-M4 Processor Exceptions Numbers ***************************************************/
-  NonMaskableInt_IRQn    = -14,    /*!< 2 Non Maskable Interrupt                             */
-  HardFault_IRQn         = -13,    /*!< 3 Cortex-M4 Hard Fault Interrupt                     */
-  SVCall_IRQn            = -5,     /*!< 11 Cortex-M4 SV Call Interrupt                       */
-  PendSV_IRQn            = -2,     /*!< 14 Cortex-M4 Pend SV Interrupt                       */
-  SysTick_IRQn           = -1,     /*!< 15 Cortex-M4 System Tick Interrupt                   */
+  NonMaskableInt_IRQn= -14,    /*!< 2 Non Maskable Interrupt                             */
+  HardFault_IRQn     = -13,    /*!< 3 Cortex-M4 Hard Fault Interrupt                     */
+  SVCall_IRQn        = -5,     /*!< 11 Cortex-M4 SV Call Interrupt                       */
+  PendSV_IRQn        = -2,     /*!< 14 Cortex-M4 Pend SV Interrupt                       */
+  SysTick_IRQn       = -1,     /*!< 15 Cortex-M4 System Tick Interrupt                   */
 
 /******  CM4IKMCU Cortex-M4 specific Interrupt Numbers ********************************************/
-  FT_IF0_IRQn            = 32,
-  FT_IF1_IRQn            = 33,
-  FT_IF2_IRQn            = 34,
-  FT_IF3_IRQn            = 35,
-  CLK_IF_IRQn            = 36,
-  PVD_IF_IRQn            = 37,
-  RTC_IF_IRQn            = 38,
-  BKP_IF_IRQn            = 39,
-  EXT_INTERROR0_IRQn     = 40,
-  EXT_INTERROR1_IRQn     = 41,
-  EXT_INTERROR2_IRQn     = 42,
-  EXT_INTERROR3_IRQn     = 43,
-  EXT_INTERROR4_IRQn     = 44,
-  EXT_INTERROR5_IRQn     = 45,
-  EXT_INTERROR6_IRQn     = 46,
-  EXT_INTERROR7_IRQn     = 47,
-  IF_ERR_SCR_IRQn        = 48,
-  IF_FIN_SCR_IRQn        = 49,
-  DMA_ERR_IRQn           = 50,
-  DMA_DONE0_IRQn         = 51,
-  DMA_DONE1_IRQn         = 52,
-  DMA_DONE2_IRQn         = 53,
-  DMA_DONE3_IRQn         = 54,
-  DMA_DONE4_IRQn         = 55,
-  DMA_DONE5_IRQn         = 56,
-  DMA_DONE6_IRQn         = 57,
-  DMA_DONE7_IRQn         = 58,
-  DMA_DONE8_IRQn         = 59,
-  DMA_DONE9_IRQn         = 60,
-  DMA_DONE10_IRQn        = 61,
-  DMA_DONE11_IRQn        = 62,
-  DMA_DONE12_IRQn        = 63,
-  DMA_DONE13_IRQn        = 64,
-  DMA_DONE14_IRQn        = 65,
-  DMA_DONE15_IRQn        = 66,
-  DMA_DONE16_IRQn        = 67,
-  DMA_DONE17_IRQn        = 68,
-  DMA_DONE18_IRQn        = 69,
-  DMA_DONE19_IRQn        = 70,
-  DMA_DONE20_IRQn        = 71,
-  DMA_DONE21_IRQn        = 72,
-  DMA_DONE22_IRQn        = 73,
-  DMA_DONE23_IRQn        = 74,
-  DMA_DONE24_IRQn        = 75,
-  DMA_DONE25_IRQn        = 76,
-  DMA_DONE26_IRQn        = 77,
-  DMA_DONE27_IRQn        = 78,
-  DMA_DONE28_IRQn        = 79,
-  DMA_DONE29_IRQn        = 80,
-  DMA_DONE30_IRQn        = 81,
-  DMA_DONE31_IRQn        = 82,
-  IRQ_PORTA_IRQn         = 83,
-  IRQ_PORTB_IRQn         = 84,
-  IRQ_PORTC_IRQn         = 85,
-  IRQ_PORTD_IRQn         = 86,
-  INT_ETH_IRQn           = 89,
-  INT_CAN0_IRQn          = 90,
-  INT_CAN1_IRQn          = 91,
-  INT_SSP0_IRQn          = 92,
-  INT_SSP0_RXINTR_IRQn   = 93,
-  INT_SSP0_TXINTR_IRQn   = 94, 
-  INT_SSP0_RORINTR_IRQn  = 95, 
-  INT_SSP0_RTINTR_IRQn   = 96, 
-  INT_SSP0_RNEINTR_IRQn  = 97, 
-  INT_SSP0_TFEINTR_IRQn  = 98,
-  INT_SSP0_TBSYINTR_IRQn = 99,  
-  INT_SSP1_IRQn          = 100,
-  INT_SSP1_RXINTR_IRQn   = 101,
-  INT_SSP1_TXINTR_IRQn   = 102, 
-  INT_SSP1_RORINTR_IRQn  = 103, 
-  INT_SSP1_RTINTR_IRQn   = 104, 
-  INT_SSP1_RNEINTR_IRQn  = 105, 
-  INT_SSP1_TFEINTR_IRQn  = 106,
-  INT_SSP1_TBSYINTR_IRQn = 107,
-  INT_UART0_IRQn         = 108,
-  INT_UART0_TBSYINTR_IRQn= 109,
-  INT_UART0_TFEINTR_IRQn = 110,
-  INT_UART0_RNEINTR_IRQn = 111,
-  INT_UART0_EINTR_IRQn   = 112,
-  INT_UART0_RTINTR_IRQn  = 113,
-  INT_UART0_TXINTR_IRQn  = 114,
-  INT_UART0_RXINTR_IRQn  = 115,
-  INT_UART0_MSINTR_IRQn  = 116,
-  INT_UART1_IRQn         = 117,
-  INT_UART1_TBSYINTR_IRQn= 118,
-  INT_UART1_TFEINTR_IRQn = 119,
-  INT_UART1_RNEINTR_IRQn = 120,
-  INT_UART1_EINTR_IRQn   = 121,
-  INT_UART1_RTINTR_IRQn  = 122,
-  INT_UART1_TXINTR_IRQn  = 123,
-  INT_UART1_RXINTR_IRQn  = 124,
-  INT_UART1_MSINTR_IRQn  = 125,
-  INT_UART2_IRQn         = 126,
-  INT_UART2_TBSYINTR_IRQn= 127,
-  INT_UART2_TFEINTR_IRQn = 128,
-  INT_UART2_RNEINTR_IRQn = 129,
-  INT_UART2_EINTR_IRQn   = 130,
-  INT_UART2_RTINTR_IRQn  = 131,
-  INT_UART2_TXINTR_IRQn  = 132,
-  INT_UART2_RXINTR_IRQn  = 133,
-  INT_UART2_MSINTR_IRQn  = 134,
-  INT_UART3_IRQn         = 135,
-  INT_UART3_TBSYINTR_IRQn= 136,
-  INT_UART3_TFEINTR_IRQn = 137,
-  INT_UART3_RNEINTR_IRQn = 138,
-  INT_UART3_EINTR_IRQn   = 139,
-  INT_UART3_RTINTR_IRQn  = 140,
-  INT_UART3_TXINTR_IRQn  = 141,
-  INT_UART3_RXINTR_IRQn  = 142,
-  INT_UART3_MSINTR_IRQn  = 143,
-  INT_USB_IRQn           = 144,
-  INT_MIL0_IRQn          = 145,
-  INT_DAC0_IRQn          = 146,
-  INT_DAC1_IRQn          = 147,
-  INT_DAC2_IRQn          = 148,
-  INT_DAC3_IRQn          = 149,
-  INT_DAC0_FIFO_IRQn     = 150,
-  INT_DAC1_FIFO_IRQn     = 151,
-  INT_DAC2_FIFO_IRQn     = 152,
-  INT_DAC3_FIFO_IRQn     = 153,
-  INT_TMR0_IRQn          = 154,
-  INT_TMR1_IRQn          = 155,
-  INT_TMR2_IRQn          = 156,
-  INT_TMR3_IRQn          = 157,
-  INT_QEP0_IRQn          = 158,
-  INT_QEP1_IRQn          = 159,
-  INT_CAP0_IRQn          = 162,
-  INT_CAP1_IRQn          = 163,
-  INT_CAP2_IRQn          = 164,
-  INT_CAP3_IRQn          = 165,
-  INT_EPWM9_IRQn         = 166,
-  INT_EPWM8_IRQn         = 167,
-  INT_EPWM7_IRQn         = 168,
-  INT_EPWM6_IRQn         = 169,
-  INT_EPWM5_IRQn         = 170,
-  INT_EPWM4_IRQn         = 171,
-  INT_EPWM3_IRQn         = 172,
-  INT_EPWM2_IRQn         = 173,
-  INT_EPWM1_IRQn         = 174,
-  INT_EPWM_TZ9_IRQn      = 175,
-  INT_EPWM_TZ8_IRQn      = 176,
-  INT_EPWM_TZ7_IRQn      = 177,
-  INT_EPWM_TZ6_IRQn      = 178,
-  INT_EPWM_TZ5_IRQn      = 179,
-  INT_EPWM_TZ4_IRQn      = 180,
-  INT_EPWM_TZ3_IRQn      = 181,
-  INT_EPWM_TZ2_IRQn      = 182,
-  INT_EPWM_TZ1_IRQn      = 183,
-  INT_EPWM_FIFO9_IRQn    = 184,
-  INT_EPWM_FIFO8_IRQn    = 185,
-  INT_EPWM_FIFO7_IRQn    = 186,
-  INT_EPWM_FIFO6_IRQn    = 187,
-  INT_EPWM_FIFO5_IRQn    = 188,
-  INT_EPWM_FIFO4_IRQn    = 189,
-  INT_EPWM_FIFO3_IRQn    = 190,
-  INT_EPWM_FIFO2_IRQn    = 191,
-  INT_EPWM_FIFO1_IRQn    = 192,
-  INT_CMP0_IRQn          = 193,
-  INT_CMP1_IRQn          = 194,
-  INT_CMP2_IRQn          = 195,
-  INT_CMP3_IRQn          = 196,
-  INT_ADC12_IRQn         = 197,
-  INT_ADC_FIFO12_IRQn    = 198,
-  INT_ADC11_IRQn         = 199,
-  INT_ADC_FIFO11_IRQn    = 200,
-  INT_ADC10_IRQn         = 201,
-  INT_ADC_FIFO10_IRQn    = 202,
-  INT_ADC02_IRQn         = 203,
-  INT_ADC_FIFO02_IRQn    = 204,
-  INT_ADC01_IRQn         = 205,
-  INT_ADC_FIFO01_IRQn    = 206,
-  INT_ADC00_IRQn         = 207,
-  INT_ADC_FIFO00_IRQn    = 208, 
-  INT_CRCD_IRQn          = 209,
-  INT_CANFD_IRQn         = 210,
-  INT_MIL1_IRQn          = 211
+  FT_IF0_IRQn        = 32,
+  FT_IF1_IRQn        = 33,
+  FT_IF2_IRQn        = 34,
+  FT_IF3_IRQn        = 35,
+  CLK_IF_IRQn        = 36,
+  PVD_IF_IRQn        = 37,
+  RTC_IF_IRQn        = 38,
+  BKP_IF_IRQn        = 39,
+  EXT_INTERROR0_IRQn = 40,
+  EXT_INTERROR1_IRQn = 41,
+  EXT_INTERROR2_IRQn = 42,
+  EXT_INTERROR3_IRQn = 43,
+  EXT_INTERROR4_IRQn = 44,
+  EXT_INTERROR5_IRQn = 45,
+  EXT_INTERROR6_IRQn = 46,
+  EXT_INTERROR7_IRQn = 47,
+  IF_ERR_SCR_IRQn    = 48,
+  IF_FIN_SCR_IRQn    = 49,
+  DMA_ERR_IRQn       = 50,
+  DMA_DONE0_IRQn     = 51,
+  DMA_DONE1_IRQn     = 52,
+  DMA_DONE2_IRQn     = 53,
+  DMA_DONE3_IRQn     = 54,
+  DMA_DONE4_IRQn     = 55,
+  DMA_DONE5_IRQn     = 56,
+  DMA_DONE6_IRQn     = 57,
+  DMA_DONE7_IRQn     = 58,
+  DMA_DONE8_IRQn     = 59,
+  DMA_DONE9_IRQn     = 60,
+  DMA_DONE10_IRQn    = 61,
+  DMA_DONE11_IRQn    = 62,
+  DMA_DONE12_IRQn    = 63,
+  DMA_DONE13_IRQn    = 64,
+  DMA_DONE14_IRQn    = 65,
+  DMA_DONE15_IRQn    = 66,
+  DMA_DONE16_IRQn    = 67,
+  DMA_DONE17_IRQn    = 68,
+  DMA_DONE18_IRQn    = 69,
+  DMA_DONE19_IRQn    = 70,
+  DMA_DONE20_IRQn    = 71,
+  DMA_DONE21_IRQn    = 72,
+  DMA_DONE22_IRQn    = 73,
+  DMA_DONE23_IRQn    = 74,
+  DMA_DONE24_IRQn    = 75,
+  DMA_DONE25_IRQn    = 76,
+  DMA_DONE26_IRQn    = 77,
+  DMA_DONE27_IRQn    = 78,
+  DMA_DONE28_IRQn    = 79,
+  DMA_DONE29_IRQn    = 80,
+  DMA_DONE30_IRQn    = 81,
+  DMA_DONE31_IRQn    = 82,
+  IRQ_PORTA_IRQn     = 83,
+  IRQ_PORTB_IRQn     = 84,
+  IRQ_PORTC_IRQn     = 85,
+  IRQ_PORTD_IRQn     = 86,
+  ETH_IRQn           = 89,
+  CAN0_IRQn          = 90,
+  CAN1_IRQn          = 91,
+  SSP0_IRQn          = 92,
+  SSP0_RXINTR_IRQn   = 93,
+  SSP0_TXINTR_IRQn   = 94, 
+  SSP0_RORINTR_IRQn  = 95, 
+  SSP0_RTINTR_IRQn   = 96, 
+  SSP0_RNEINTR_IRQn  = 97, 
+  SSP0_TFEINTR_IRQn  = 98,
+  SSP0_TBSYINTR_IRQn = 99,  
+  SSP1_IRQn          = 100,
+  SSP1_RXINTR_IRQn   = 101,
+  SSP1_TXINTR_IRQn   = 102, 
+  SSP1_RORINTR_IRQn  = 103, 
+  SSP1_RTINTR_IRQn   = 104, 
+  SSP1_RNEINTR_IRQn  = 105, 
+  SSP1_TFEINTR_IRQn  = 106,
+  SSP1_TBSYINTR_IRQn = 107,
+  UART0_IRQn         = 108,
+  UART0_TBSYINTR_IRQn= 109,
+  UART0_TFEINTR_IRQn = 110,
+  UART0_RNEINTR_IRQn = 111,
+  UART0_EINTR_IRQn   = 112,
+  UART0_RTINTR_IRQn  = 113,
+  UART0_TXINTR_IRQn  = 114,
+  UART0_RXINTR_IRQn  = 115,
+  UART0_MSINTR_IRQn  = 116,
+  UART1_IRQn         = 117,
+  UART1_TBSYINTR_IRQn= 118,
+  UART1_TFEINTR_IRQn = 119,
+  UART1_RNEINTR_IRQn = 120,
+  UART1_EINTR_IRQn   = 121,
+  UART1_RTINTR_IRQn  = 122,
+  UART1_TXINTR_IRQn  = 123,
+  UART1_RXINTR_IRQn  = 124,
+  UART1_MSINTR_IRQn  = 125,
+  UART2_IRQn         = 126,
+  UART2_TBSYINTR_IRQn= 127,
+  UART2_TFEINTR_IRQn = 128,
+  UART2_RNEINTR_IRQn = 129,
+  UART2_EINTR_IRQn   = 130,
+  UART2_RTINTR_IRQn  = 131,
+  UART2_TXINTR_IRQn  = 132,
+  UART2_RXINTR_IRQn  = 133,
+  UART2_MSINTR_IRQn  = 134,
+  UART3_IRQn         = 135,
+  UART3_TBSYINTR_IRQn= 136,
+  UART3_TFEINTR_IRQn = 137,
+  UART3_RNEINTR_IRQn = 138,
+  UART3_EINTR_IRQn   = 139,
+  UART3_RTINTR_IRQn  = 140,
+  UART3_TXINTR_IRQn  = 141,
+  UART3_RXINTR_IRQn  = 142,
+  UART3_MSINTR_IRQn  = 143,
+  USB_IRQn           = 144,
+  MIL0_IRQn          = 145,
+  DAC0_IRQn          = 146,
+  DAC1_IRQn          = 147,
+  DAC2_IRQn          = 148,
+  DAC3_IRQn          = 149,
+  DAC0_FIFO_IRQn     = 150,
+  DAC1_FIFO_IRQn     = 151,
+  DAC2_FIFO_IRQn     = 152,
+  DAC3_FIFO_IRQn     = 153,
+  TMR0_IRQn          = 154,
+  TMR1_IRQn          = 155,
+  TMR2_IRQn          = 156,
+  TMR3_IRQn          = 157,
+  QEP0_IRQn          = 158,
+  QEP1_IRQn          = 159,
+  CAP0_IRQn          = 162,
+  CAP1_IRQn          = 163,
+  CAP2_IRQn          = 164,
+  CAP3_IRQn          = 165,
+  EPWM8_IRQn         = 166,
+  EPWM7_IRQn         = 167,
+  EPWM6_IRQn         = 168,
+  EPWM5_IRQn         = 169,
+  EPWM4_IRQn         = 170,
+  EPWM3_IRQn         = 171,
+  EPWM2_IRQn         = 172,
+  EPWM1_IRQn         = 173,
+  EPWM0_IRQn         = 174,
+  EPWM_TZ8_IRQn      = 175,
+  EPWM_TZ7_IRQn      = 176,
+  EPWM_TZ6_IRQn      = 177,
+  EPWM_TZ5_IRQn      = 178,
+  EPWM_TZ4_IRQn      = 179,
+  EPWM_TZ3_IRQn      = 180,
+  EPWM_TZ2_IRQn      = 181,
+  EPWM_TZ1_IRQn      = 182,
+  EPWM_TZ0_IRQn      = 183,
+  EPWM_FIFO8_IRQn    = 184,
+  EPWM_FIFO7_IRQn    = 185,
+  EPWM_FIFO6_IRQn    = 186,
+  EPWM_FIFO5_IRQn    = 187,
+  EPWM_FIFO4_IRQn    = 188,
+  EPWM_FIFO3_IRQn    = 189,
+  EPWM_FIFO2_IRQn    = 190,
+  EPWM_FIFO1_IRQn    = 191,
+	EPWM_FIFO0_IRQn    = 192,
+  CMP0_IRQn          = 193,
+  CMP1_IRQn          = 194,
+  CMP2_IRQn          = 195,
+  CMP3_IRQn          = 196,
+  ADC00_IRQn         = 197,
+  ADC_FIFO00_IRQn    = 198,
+	ADC01_IRQn         = 199,
+  ADC_FIFO01_IRQn    = 200,
+	ADC02_IRQn         = 201,
+  ADC_FIFO02_IRQn    = 202,
+	ADC10_IRQn         = 203,
+  ADC_FIFO10_IRQn    = 204,
+  ADC11_IRQn         = 205,
+  ADC_FIFO11_IRQn    = 206,
+  ADC12_IRQn         = 207,
+  ADC_FIFO12_IRQn    = 208,
+  CRCD_IRQn          = 209,
+  CANFD_IRQn         = 210,
+  MIL1_IRQn          = 211
 } IRQn_Type;
 
 
@@ -232,21 +232,16 @@ typedef enum IRQn
 
 
 #include "core_cm4.h"                   /* Cortex-M4 processor and core peripherals               */
-#include "system_cm4ikmcu.h"            /* cm4ikmcu System                                        */
+#include "system_mldr124.h"            /* mldr124 System                                        */
 
+typedef enum {RESET = 0, SET = !RESET} FlagStatus, ITStatus, BitStatus;
 
+#define IS_BIT_STATUS(STATUS)	(((STATUS) == RESET) || ((STATE) == SET))
 
-/**
- * Initialize the system clock
- *
- * @param  none
- * @return none
- *
- * @brief  Setup the microcontroller system
- *         Initialize the PLL and update the SystemFrequency variable
- */
-extern void SystemInit (void);
+typedef enum {DISABLE = 0, ENABLE = !DISABLE} FunctionalState;
+#define IS_FUNCTIONAL_STATE(STATE) (((STATE) == DISABLE) || ((STATE) == ENABLE))
 
+typedef enum {ERROR = 0, SUCCESS = !ERROR} ErrorStatus;
 
 /**************************************************************************************************/
 /*                                  Memory map                                                    */
@@ -752,6 +747,233 @@ typedef struct
 
 #define MDR_ETH0                  ((MDR_ETH_TypeDef *) MDR_ETH0_BASE)
 
+/*-- ETH_G_CFG: ETH G_CFG Register -----*/
+/* Bit field positions: */
+#define ETH_G_CFG_ColWnd_Pos          		0
+#define ETH_G_CFG_PAUSE_EN_Pos       		8
+#define ETH_G_CFG_DTRM_EN_Pos         		9
+#define ETH_G_CFG_HD_EN_Pos          		10
+#define ETH_G_CFG_EXT_EN_Pos          		11
+#define ETH_G_CFG_BUFF_MODE_Pos       		12
+#define ETH_G_CFG_RCLR_EN_Pos         		14
+#define ETH_G_CFG_XRST_Pos					16
+#define ETH_G_CFG_RRST_Pos            	 	17
+#define ETH_G_CFG_DLB_Pos					18
+#define ETH_G_CFG_RMIInMII_Pos				19
+#define ETH_G_CFG_RMII_SPEED_Pos			20
+#define ETH_G_CFG_DBG_RF_EN_Pos			    28
+#define ETH_G_CFG_DBG_XF_EN_Pos			    29
+#define ETH_G_CFG_DBG_MODE_Pos				30
+
+/* Bit field masks: */
+#define ETH_G_CFG_XRST               		((uint32_t)0x00010000)
+#define ETH_G_CFG_RRST         		        ((uint32_t)0x00020000)
+#define ETH_G_CFG_BUFF_MODE_Msk             ((uint32_t)0x00003000)
+
+/** @} */ /* End of group ETH_G_CFGh */
+
+/** @defgroup __1T_Periph_ETH_X_CFG	ETH X CFG
+  * @{
+  */ 
+
+/*-- ETH_X_CFG: ETH X_CFG Register -----*/
+/* Bit field positions: */
+#define ETH_X_CFG_RtryCnt_Pos         		0
+#define ETH_X_CFG_IPG_EN_Pos          		4
+#define ETH_X_CFG_CRC_EN_Pos          		5
+#define ETH_X_CFG_PRE_EN_Pos          		6
+#define ETH_X_CFG_PAD_EN_Pos          		7
+#define ETH_X_CFG_EVNT_MODE_Pos       		8
+#define ETH_X_CFG_MSB1st_Pos          		12
+#define ETH_X_CFG_BE_Pos              		13
+#define ETH_X_CFG_EN_Pos             		15
+
+/* Bit field masks: */
+#define ETH_X_CFG_RtryCnt_Msk         		((uint32_t)0x0000000F)
+#define ETH_X_CFG_IPG_EN               		((uint32_t)0x00000010)
+#define ETH_X_CFG_CRC_EN               		((uint32_t)0x00000020)
+#define ETH_X_CFG_PRE_EN               		((uint32_t)0x00000040)
+#define ETH_X_CFG_PAD_EN               		((uint32_t)0x00000080)
+#define ETH_X_CFG_EVNT_MODE_Msk       		((uint32_t)0x00000700)
+#define ETH_X_CFG_MSB1st               		((uint32_t)0x00001000)
+#define ETH_X_CFG_BE                   		((uint32_t)0x00002000)
+#define ETH_X_CFG_EN                  		((uint32_t)0x00008000)
+
+/** @} */ /* End of group ETH_X_CFG */
+
+/** @defgroup __1T_Periph_ETH_R_CFG	ETH R CFG
+  * @{
+  */ 
+
+/*-- ETH_R_CFG: ETH R_CFG Register -----*/
+/* Bit field positions: */
+#define ETH_R_CFG_MCA_EN_Pos          0
+#define ETH_R_CFG_BCA_EN_Pos          1
+#define ETH_R_CFG_UCA_EN_Pos          2
+#define ETH_R_CFG_AC_EN_Pos           3
+#define ETH_R_CFG_EF_EN_Pos           4
+#define ETH_R_CFG_CF_EN_Pos           5
+#define ETH_R_CFG_LF_EN_Pos           6
+#define ETH_R_CFG_SF_EN_Pos           7
+#define ETH_R_CFG_EVNT_MODE_Pos       8
+#define ETH_R_CFG_MSB1st_Pos          12
+#define ETH_R_CFG_BE_Pos              13
+#define ETH_R_CFG_EN_Pos              15
+
+/* Bit field masks: */
+#define ETH_R_CFG_MCA_EN               ((uint32_t)0x00000001)
+#define ETH_R_CFG_BCA_EN               ((uint32_t)0x00000002)
+#define ETH_R_CFG_UCA_EN               ((uint32_t)0x00000004)
+#define ETH_R_CFG_AC_EN                ((uint32_t)0x00000008)
+#define ETH_R_CFG_EF_EN                ((uint32_t)0x00000010)
+#define ETH_R_CFG_CF_EN                ((uint32_t)0x00000020)
+#define ETH_R_CFG_LF_EN                ((uint32_t)0x00000040)
+#define ETH_R_CFG_SF_EN                ((uint32_t)0x00000080)
+#define ETH_R_CFG_EVNT_MODE_Msk        ((uint32_t)0x00000700)
+#define ETH_R_CFG_MSB1st               ((uint32_t)0x00001000)
+#define ETH_R_CFG_BE                   ((uint32_t)0x00002000)
+#define ETH_R_CFG_EN                   ((uint32_t)0x00008000)
+
+/** @} */ /* End of group ETH_R_CFG */
+
+/** @defgroup __1T_Periph_ETH_IMR	ETH IMR
+  * @{
+  */ 
+
+/*-- ETH_IMR: ETH IMR Register -----*/
+/* Bit field positions: */
+#define ETH_IMR_RF_OK_Pos             0
+#define ETH_IMR_MISSED_F_Pos          1
+#define ETH_IMR_OVF_Pos               2
+#define ETH_IMR_SMB_ERR_Pos           3
+#define ETH_IMR_CRC_ERR_Pos           4
+#define ETH_IMR_CF_Pos                5
+#define ETH_IMR_LF_Pos                6
+#define ETH_IMR_SF_Pos                7
+#define ETH_IMR_XF_OK_Pos             8
+#define ETH_IMR_XF_ERR_Pos            9
+#define ETH_IMR_UNDF_Pos              10
+#define ETH_IMR_LC_Pos                11
+#define ETH_IMR_CRS_LOST_Pos          12
+#define ETH_IMR_MDIO_INT_Pos          14
+#define ETH_IMR_MII_RDY_Pos           15
+
+/* Bit field masks: */
+#define ETH_IMR_RF_OK                  ((uint32_t)0x00000001)
+#define ETH_IMR_MISSED_F               ((uint32_t)0x00000002)
+#define ETH_IMR_OVF                    ((uint32_t)0x00000004)
+#define ETH_IMR_SMB_ERR                ((uint32_t)0x00000008)
+#define ETH_IMR_CRC_ERR                ((uint32_t)0x00000010)
+#define ETH_IMR_CF                     ((uint32_t)0x00000020)
+#define ETH_IMR_LF                     ((uint32_t)0x00000040)
+#define ETH_IMR_SF                     ((uint32_t)0x00000080)
+#define ETH_IMR_XF_OK                  ((uint32_t)0x00000100)
+#define ETH_IMR_XF_ERR                 ((uint32_t)0x00000200)
+#define ETH_IMR_UNDF                   ((uint32_t)0x00000400)
+#define ETH_IMR_LC                     ((uint32_t)0x00000800)
+#define ETH_IMR_CRS_LOST               ((uint32_t)0x00001000)
+#define ETH_IMR_MDIO_INT			   ((uint32_t)0x00004000)
+#define ETH_IMR_MII_RDY                ((uint32_t)0x00008000)
+
+/** @} */ /* End of group ETH_IMR */
+
+/** @defgroup __1T_Periph_ETH_IFR	ETH IFR
+  * @{
+  */ 
+
+/*-- ETH_IFR: ETH IFR Register -----*/
+/* Bit field positions: */
+#define ETH_IFR_RF_OK_Pos             0
+#define ETH_IFR_MISSED_F_Pos          1
+#define ETH_IFR_OVF_Pos               2
+#define ETH_IFR_SMB_ERR_Pos           3
+#define ETH_IFR_CRC_ERR_Pos           4
+#define ETH_IFR_CF_Pos                5
+#define ETH_IFR_LF_Pos                6
+#define ETH_IFR_SF_Pos                7
+#define ETH_IFR_XF_OK_Pos             8
+#define ETH_IFR_XF_ERR_Pos            9
+#define ETH_IFR_UNDF_Pos              10
+#define ETH_IFR_LC_Pos                11
+#define ETH_IFR_CRS_LOST_Pos          12
+#define ETH_IFR_MDIO_INT_Pos          14
+#define ETH_IFR_MII_RDY_Pos           15
+
+/* Bit field masks: */
+#define ETH_IFR_RF_OK                  ((uint32_t)0x00000001)
+#define ETH_IFR_MISSED_F               ((uint32_t)0x00000002)
+#define ETH_IFR_OVF                    ((uint32_t)0x00000004)
+#define ETH_IFR_SMB_ERR                ((uint32_t)0x00000008)
+#define ETH_IFR_CRC_ERR                ((uint32_t)0x00000010)
+#define ETH_IFR_CF                     ((uint32_t)0x00000020)
+#define ETH_IFR_LF                     ((uint32_t)0x00000040)
+#define ETH_IFR_SF                     ((uint32_t)0x00000080)
+#define ETH_IFR_XF_OK                  ((uint32_t)0x00000100)
+#define ETH_IFR_XF_ERR                 ((uint32_t)0x00000200)
+#define ETH_IFR_UNDF                   ((uint32_t)0x00000400)
+#define ETH_IFR_LC                     ((uint32_t)0x00000800)
+#define ETH_IFR_CRS_LOST               ((uint32_t)0x00001000)
+#define ETH_IFR_MDIO_INT			   ((uint32_t)0x00004000)
+#define ETH_IFR_MII_RDY                ((uint32_t)0x00008000)
+
+/** @} */ /* End of group ETH_IFR */
+
+/** @defgroup __1T_Periph_ETH_STAT	ETH STAT
+  * @{
+  */ 
+
+/*-- ETH_STAT: ETH STAT Register -----*/
+/* Bit field positions: */
+#define ETH_STAT_R_EMPTY_Pos			0
+#define ETH_STAT_R_AEMPTY_Pos			1
+#define ETH_STAT_R_HALF_Pos				2
+#define ETH_STAT_R_AFULL_Pos			3
+#define ETH_STAT_R_FULL_Pos				4
+#define ETH_STAT_R_COUNT_Pos			5
+#define ETH_STAT_X_EMPTY_Pos			8
+#define ETH_STAT_X_AEMPTY_Pos			9
+#define ETH_STAT_X_HALF_Pos				10
+#define ETH_STAT_X_AFULL_Pos			11
+#define ETH_STAT_X_FULL_Pos				12
+
+/* Bit field masks: */
+#define ETH_STAT_R_EMPTY				((uint32_t)0x00000001)
+#define ETH_STAT_R_AEMPTY				((uint32_t)0x00000002)
+#define ETH_STAT_R_HALF					((uint32_t)0x00000004)
+#define ETH_STAT_R_AFULL				((uint32_t)0x00000008)
+#define ETH_STAT_R_FULL					((uint32_t)0x00000010)
+#define ETH_STAT_R_COUNT_Msk			((uint32_t)0x000000E0)
+#define ETH_STAT_X_EMPTY				((uint32_t)0x00000100)
+#define ETH_STAT_X_AEMPTY				((uint32_t)0x00000200)
+#define ETH_STAT_X_HALF					((uint32_t)0x00000400)
+#define ETH_STAT_X_AFULL				((uint32_t)0x00000800)
+#define ETH_STAT_X_FULL					((uint32_t)0x00001000)
+
+/** @} */ /* End of group ETH_STAT */
+
+/** @defgroup __1T_Periph_ETH_MDIO_CTRL	ETH MDIO CTRL
+  * @{
+  */ 
+
+/*-- ETH_MDIO_CTRL: ETH MDIO_CTRL Register -----*/
+/* Bit field positions: */
+#define ETH_MDIO_CTRL_RG_A_Pos			0
+#define ETH_MDIO_CTRL_DIV_Pos			5
+#define ETH_MDIO_CTRL_PHY_A_Pos			8
+#define ETH_MDIO_CTRL_OP_Pos			13
+#define ETH_MDIO_CTRL_PRE_EN_Pos		14
+#define ETH_MDIO_CTRL_RDY_Pos			15
+
+/* Bit field masks: */
+#define ETH_MDIO_CTRL_RG_A_Msk			((uint32_t)0x0000001F)
+#define ETH_MDIO_CTRL_DIV_Msk			((uint32_t)0x000000E0)
+#define ETH_MDIO_CTRL_PHY_A_Msk			((uint32_t)0x00001F00)
+#define ETH_MDIO_CTRL_OP				((uint32_t)0x00002000)
+#define ETH_MDIO_CTRL_PRE_EN			((uint32_t)0x00004000)
+#define ETH_MDIO_CTRL_RDY				((uint32_t)0x00008000)
+
+/** @} */ /* End of group ETH_MDIO_CTRL */
+
 //---USB-------------------------------------------------------------------------------------------;
 /****
 / USB controller interface
@@ -1097,9 +1319,9 @@ typedef struct
 
 #define FLASH_BASE                (PERIPH_BASE + 0x06000)
 
-#define FLASH1_CNTR_BASE          (FLASH_BASE   + 0x0000)
+#define FLASH_CNTR_BASE          (FLASH_BASE   + 0x0000)
 
-#define FLASH1_CNTR               ((FLASHControl *) FLASH1_CNTR_BASE)
+#define FLASH_CNTR               ((FLASHControl *) FLASH_CNTR_BASE)
 
 //---ROM,RAMC,RAMD---------------------------------------------------------------------------------;
 /***
@@ -1198,6 +1420,36 @@ typedef struct
 #define EB_CNTR_WS_ACTIVE(act)    ((act & 0xf) << 16)
 #define EB_CNTR_WS_SETUP(setup)   ((setup & 0xff) << 8)
 
+#define EBC_EN_pos			      0
+#define EBC_ECCEN_pos			  1
+#define EBC_ECCMODE_pos			  2
+#define EBC_RDYWAIT_pos			  3
+#define EBC_MODE_pos			  4
+#define EBC_ROM_pos				  6
+#define EBC_CPOL_pos			  7
+#define EBC_WS_ACTIVE_pos		  8
+#define EBC_WS_SETUP_pos		  16
+#define EBC_WS_HOLD_pos			  20
+#define EBC_ECC8BIT_pos		      24
+#define EBC_ENOCLK_pos			  27
+#define EBC_DIVOCLK_pos			  28
+
+#define EBC_EN_MSK			      ((uint32_t) 0x00000001)
+#define EBC_ECCEN_MSK			  ((uint32_t) 0x00000002)
+#define EBC_ECCMODE_MSK			  ((uint32_t) 0x00000004)
+#define EBC_RDYWAIT_MSK			  ((uint32_t) 0x00000008)
+#define EBC_MODE_MSK			  ((uint32_t) 0x00000030)
+#define EBC_ROM_MSK				  ((uint32_t) 0x00000040)
+#define EBC_CPOL_MSK			  ((uint32_t) 0x00000080)
+#define EBC_WS_ACTIVE_MSK		  ((uint32_t) 0x0000FF00)
+#define EBC_WS_SETUP_MSK		  ((uint32_t) 0x000F0000)
+#define EBC_WS_HOLD_MSK			  ((uint32_t) 0x00F00000)
+#define EBC_USESEPAR_MSK		  ((uint32_t) 0x01000000)
+#define EBC_CACHEBLE_MSK		  ((uint32_t) 0x02000000)
+#define EBC_READ32_MSK			  ((uint32_t) 0x04000000)
+#define EBC_ENOCLK_MSK			  ((uint32_t) 0x08000000)
+#define EBC_DIVOCLK_MSK			  ((uint32_t) 0xF0000000)
+
 //---PORT------------------------------------------------------------------------------------------;
 /***
 *  PORT control
@@ -1253,15 +1505,11 @@ typedef struct
 #define PORTB_BASE                (MDR_PORT_BASE + 0x1000)
 #define PORTC_BASE                (MDR_PORT_BASE + 0x2000)
 #define PORTD_BASE                (MDR_PORT_BASE + 0x3000)
-#define PORTE_BASE                (MDR_PORT_BASE + 0x4000)
-#define PORTF_BASE                (MDR_PORT_BASE + 0x5000)
 
 #define PORTA                     ((PortControl *) PORTA_BASE)
 #define PORTB                     ((PortControl *) PORTB_BASE)
 #define PORTC                     ((PortControl *) PORTC_BASE)
 #define PORTD                     ((PortControl *) PORTD_BASE)
-#define PORTE                     ((PortControl *) PORTE_BASE)
-#define PORTF                     ((PortControl *) PORTF_BASE)
 
 #define FUNC_MASK 0x0f
 #define FUNCREGNUM(pin) (pin >> 3)
@@ -1423,6 +1671,168 @@ typedef struct
 #define MDR_CAN0                  ((MDR_CAN_TypeDef *) MDR_CAN0_BASE)
 #define MDR_CAN1                  ((MDR_CAN_TypeDef *) MDR_CAN1_BASE)
 
+/*-- CAN_CONTROL: CAN Control Register -----------------------------*/
+/* Bit field positions: */
+#define CAN_CONTROL_CAN_EN_Pos                  0
+#define CAN_CONTROL_ROM_Pos                     1
+#define CAN_CONTROL_STM_Pos                     2
+#define CAN_CONTROL_SAP_Pos                     3
+#define CAN_CONTROL_ROP_Pos                     4
+
+/* Bit field masks: */
+#define CAN_CONTROL_CAN_EN                      ((uint32_t)0x00000001)
+#define CAN_CONTROL_ROM                         ((uint32_t)0x00000002)
+#define CAN_CONTROL_STM                         ((uint32_t)0x00000004)
+#define CAN_CONTROL_SAP                         ((uint32_t)0x00000008)
+#define CAN_CONTROL_ROP                         ((uint32_t)0x00000010)
+
+/*-- CAN_STATUS: CAN Status Register -------------------------------*/
+/* Bit field positions: */
+#define CAN_STATUS_RX_READY_Pos                 0
+#define CAN_STATUS_TX_READY_Pos                 1
+#define CAN_STATUS_ERROR_OVER_Pos               2
+#define CAN_STATUS_BIT_ERR_Pos                  3
+#define CAN_STATUS_BIT_STUFF_ERR_Pos            4
+#define CAN_STATUS_CRC_ERR_Pos                  5
+#define CAN_STATUS_FRAME_ERR_Pos                6
+#define CAN_STATUS_ACK_ERR_Pos                  7
+#define CAN_STATUS_IDLOWER_Pos                  8
+#define CAN_STATUS_ERR_STATUS_Pos               9
+#define CAN_STATUS_RX_ERR_CNT8_Pos              11
+#define CAN_STATUS_TX_ERR_CNT8_Pos              12
+#define CAN_STATUS_RX_ERR_CNT_Pos               16
+#define CAN_STATUS_TX_ERR_CNT_Pos               24
+
+/* Bit field masks: */
+#define CAN_STATUS_RX_READY                     ((uint32_t)0x00000001)
+#define CAN_STATUS_TX_READY                     ((uint32_t)0x00000002)
+#define CAN_STATUS_ERROR_OVER                   ((uint32_t)0x00000004)
+#define CAN_STATUS_BIT_ERR                      ((uint32_t)0x00000008)
+#define CAN_STATUS_BIT_STUFF_ERR                ((uint32_t)0x00000010)
+#define CAN_STATUS_CRC_ERR                      ((uint32_t)0x00000020)
+#define CAN_STATUS_FRAME_ERR                    ((uint32_t)0x00000040)
+#define CAN_STATUS_ACK_ERR                      ((uint32_t)0x00000080)
+#define CAN_STATUS_IDLOWER                      ((uint32_t)0x00000100)
+#define CAN_STATUS_ERR_STATUS_Msk               ((uint32_t)0x00000600)
+#define CAN_STATUS_RX_ERR_CNT8                  ((uint32_t)0x00000800)
+#define CAN_STATUS_TX_ERR_CNT8                  ((uint32_t)0x00001000)
+#define CAN_STATUS_RX_ERR_CNT_Msk               ((uint32_t)0x00FF0000)
+#define CAN_STATUS_TX_ERR_CNT_Msk               ((uint32_t)0xFF000000)
+
+/*-- CAN_BITTMNG: CAN Bittiming Register ---------------------------*/
+/* Bit field positions: */
+#define CAN_BITTMNG_BRP_Pos                     0
+#define CAN_BITTMNG_PSEG_Pos                    16
+#define CAN_BITTMNG_SEG1_Pos                    19
+#define CAN_BITTMNG_SEG2_Pos                    22
+#define CAN_BITTMNG_SJW_Pos                     25
+#define CAN_BITTMNG_SB_Pos                      27
+
+/* Bit field masks: */
+#define CAN_BITTMNG_BRP_Msk                     ((uint32_t)0x0000FFFF)
+#define CAN_BITTMNG_PSEG_Msk                    ((uint32_t)0x00070000)
+#define CAN_BITTMNG_SEG1_Msk                    ((uint32_t)0x00380000)
+#define CAN_BITTMNG_SEG2_Msk                    ((uint32_t)0x01C00000)
+#define CAN_BITTMNG_SJW_Msk                     ((uint32_t)0x06000000)
+#define CAN_BITTMNG_SB                          ((uint32_t)0x08000000)
+
+/*-- CAN_INT_EN: CAN Interrupt enable Register ---------------------*/
+/* Bit field positions: */
+#define CAN_INT_EN_GLB_INT_EN_Pos               0
+#define CAN_INT_EN_RX_INT_EN_Pos                1
+#define CAN_INT_EN_TX_INT_EN_Pos                2
+#define CAN_INT_EN_ERR_INT_EN_Pos               3
+#define CAN_INT_EN_ERR_OVER_INT_EN_Pos          4
+
+/* Bit field masks: */
+#define CAN_INT_EN_GLB_INT_EN                   ((uint32_t)0x00000001)
+#define CAN_INT_EN_RX_INT_EN                    ((uint32_t)0x00000002)
+#define CAN_INT_EN_TX_INT_EN                    ((uint32_t)0x00000004)
+#define CAN_INT_EN_ERR_INT_EN                   ((uint32_t)0x00000008)
+#define CAN_INT_EN_ERR_OVER_INT_EN              ((uint32_t)0x00000010)
+
+/*-- CAN_RXID:   CAN Receive ID Register ---------------------------*/
+/*-- CAN_TXID:   CAN Transmit ID Register --------------------------*/
+/*-- CAN_BUF_ID: CAN Buffer ID Register ----------------------------*/
+/* Bit field positions: */
+#define CAN_ID_EID_Pos                          0
+#define CAN_ID_SID_Pos                          18
+
+/* Bit field masks: */
+#define CAN_ID_EID_Msk                          ((uint32_t)0x0003FFFF)
+#define CAN_ID_SID_Msk                          ((uint32_t)0x1FFC0000)
+
+/*-- CAN_RXDLC:   CAN Receive DLC Register -------------------------*/
+/*-- CAN_TXDLC:   CAN Transmit DLC Register ------------------------*/
+/*-- CAN_BUF_DLC: CAN Buffer DLC Register --------------------------*/
+/* Bit field positions: */
+#define CAN_DLC_Pos                             0
+#define CAN_DLC_RTR_Pos                         8
+#define CAN_DLC_R1_Pos                          9
+#define CAN_DLC_R0_Pos                          10
+#define CAN_DLC_SSR_Pos                         11
+#define CAN_DLC_IDE_Pos                         12
+
+/* Bit field masks: */
+#define CAN_DLC_Msk                             ((uint32_t)0x0000000F)
+#define CAN_DLC_RTR                             ((uint32_t)0x00000100)
+#define CAN_DLC_R1                              ((uint32_t)0x00000200)
+#define CAN_DLC_R0                              ((uint32_t)0x00000400)
+#define CAN_DLC_SSR                             ((uint32_t)0x00000800)
+#define CAN_DLC_IDE                             ((uint32_t)0x00001000)
+
+/*-- CAN_RXDATAL:   CAN Receive Data low Register ------------------*/
+/*-- CAN_DATAL:     CAN Transmit Data low Register -----------------*/
+/*-- CAN_BUF_DATAL: CAN Buffer Data low Register -------------------*/
+/* Bit field positions: */
+#define CAN_DATAL_DB0_Pos                       0
+#define CAN_DATAL_DB1_Pos                       8
+#define CAN_DATAL_DB2_Pos                       16
+#define CAN_DATAL_DB3_Pos                       24
+
+/* Bit field masks: */
+#define CAN_DATAL_DB0_Msk                       ((uint32_t)0x000000FF)
+#define CAN_DATAL_DB1_Msk                       ((uint32_t)0x0000FF00)
+#define CAN_DATAL_DB2_Msk                       ((uint32_t)0x00FF0000)
+#define CAN_DATAL_DB3_Msk                       ((uint32_t)0xFF000000)
+
+/*-- CAN_RXDATAH:   CAN Receive Data high Register -----------------*/
+/*-- CAN_DATAH:     CAN Transmit Data high Register ----------------*/
+/*-- CAN_BUF_DATAH: CAN Buffer Data high Register ------------------*/
+/* Bit field positions: */
+#define CAN_DATAH_DB4_Pos                       0
+#define CAN_DATAH_DB5_Pos                       8
+#define CAN_DATAH_DB6_Pos                       16
+#define CAN_DATAH_DB7_Pos                       24
+
+/* Bit field masks: */
+#define CAN_DATAH_DB4_Msk                       ((uint32_t)0x000000FF)
+#define CAN_DATAH_DB5_Msk                       ((uint32_t)0x0000FF00)
+#define CAN_DATAH_DB6_Msk                       ((uint32_t)0x00FF0000)
+#define CAN_DATAH_DB7_Msk                       ((uint32_t)0xFF000000)
+
+/*-- CAN_BUF_CON: CAN Buffer Connection Register -------------------*/
+/* Bit field positions: */
+#define CAN_BUF_CON_EN_Pos                      0
+#define CAN_BUF_CON_RX_TXN_Pos                  1
+#define CAN_BUF_CON_OVER_EN_Pos                 2
+#define CAN_BUF_CON_RTR_EN_Pos                  3
+#define CAN_BUF_CON_PRIOR_0_Pos                 4
+#define CAN_BUF_CON_TX_REQ_Pos                  5
+#define CAN_BUF_CON_RX_FULL_Pos                 6
+#define CAN_BUF_CON_OVER_WR_Pos                 7
+
+/* Bit field masks: */
+#define CAN_BUF_CON_EN                          ((uint32_t)0x00000001)
+#define CAN_BUF_CON_RX_TXN                      ((uint32_t)0x00000002)
+#define CAN_BUF_CON_OVER_EN                     ((uint32_t)0x00000004)
+#define CAN_BUF_CON_RTR_EN                      ((uint32_t)0x00000008)
+#define CAN_BUF_CON_PRIOR_0                     ((uint32_t)0x00000010)
+#define CAN_BUF_CON_TX_REQ                      ((uint32_t)0x00000020)
+#define CAN_BUF_CON_RX_FULL                     ((uint32_t)0x00000040)
+#define CAN_BUF_CON_OVER_WR                     ((uint32_t)0x00000080)
+
+
 //---UART------------------------------------------------------------------------------------------;
 /***
 *  MDR_UART control
@@ -1543,10 +1953,7 @@ typedef struct
   __IO  uint32_t CCR21;
   __IO  uint32_t CCR31;
   __IO  uint32_t CCR41;
-  __IO  uint32_t DMA_RECh1;
-  __IO  uint32_t DMA_RECh2;
-  __IO  uint32_t DMA_RECh3;
-  __IO  uint32_t DMA_RECh4;
+  __IO  uint32_t DMA_REChx[4];
 }MDR_TMR_TypeDef;
 
 #define MDR_TMR_BASE              (PERIPH_BASE + 0x90000)
@@ -1753,7 +2160,7 @@ typedef struct
 
   __IO  uint32_t IE;
   __IO  uint32_t RE;
-  __IO  uint32_t INT;
+  __IO  uint32_t STS;
   __IO  uint32_t DATA;
 } DACxControl;
 
@@ -1811,6 +2218,61 @@ typedef struct
 #define MDR_I2C_BASE              (PERIPH_BASE   + 0xB2000)
 
 #define MDR_I2C                   ((MDR_I2C_TypeDef *) MDR_I2C_BASE)
+
+/*-- I2C_CTR: I2C Control Register ---------------------------------*/
+/* Bit field positions: */
+#define I2C_CTR_S_I2C_Pos                       5
+#define I2C_CTR_EN_INT_Pos                      6
+#define I2C_CTR_EN_I2C_Pos                      7
+
+/* Bit field masks: */
+#define I2C_CTR_S_I2C                           ((uint32_t)0x00000020)
+#define I2C_CTR_EN_INT                          ((uint32_t)0x00000040)
+#define I2C_CTR_EN_I2C                          ((uint32_t)0x00000080)
+
+/** @} */ /* End of group I2C_CTR */
+
+/** @defgroup Periph_I2C_STA	I2C STA
+  * @{
+  */ 
+
+/*-- I2C_STA: I2C Status Register ----------------------------------*/
+/* Bit field positions: */
+#define I2C_STA_INT_Pos                         0
+#define I2C_STA_TR_PROG_Pos                     1
+#define I2C_STA_LOST_ARB_Pos                    5
+#define I2C_STA_BUSY_Pos                        6
+#define I2C_STA_RX_ACK_Pos                      7
+
+/* Bit field masks: */
+#define I2C_STA_INT                             ((uint32_t)0x00000001)
+#define I2C_STA_TR_PROG                         ((uint32_t)0x00000002)
+#define I2C_STA_LOST_ARB                        ((uint32_t)0x00000020)
+#define I2C_STA_BUSY                            ((uint32_t)0x00000040)
+#define I2C_STA_RX_ACK                          ((uint32_t)0x00000080)
+
+/** @} */ /* End of group I2C_STA */
+
+/** @defgroup Periph_I2C_CMD	I2C CMD
+  * @{
+  */ 
+
+/*-- I2C_CMD: I2C Command Register ---------------------------------*/
+/* Bit field positions: */
+#define I2C_CMD_CLRINT_Pos                      0
+#define I2C_CMD_ACK_Pos                         3
+#define I2C_CMD_WR_Pos                          4
+#define I2C_CMD_RD_Pos                          5
+#define I2C_CMD_STOP_Pos                        6
+#define I2C_CMD_START_Pos                       7
+
+/* Bit field masks: */
+#define I2C_CMD_CLRINT                          ((uint32_t)0x00000001)
+#define I2C_CMD_ACK                             ((uint32_t)0x00000008)
+#define I2C_CMD_WR                              ((uint32_t)0x00000010)
+#define I2C_CMD_RD                              ((uint32_t)0x00000020)
+#define I2C_CMD_STOP                            ((uint32_t)0x00000040)
+#define I2C_CMD_START                           ((uint32_t)0x00000080)
 
 //---ORDIC-----------------------------------------------------------------------------------------;
 /***
