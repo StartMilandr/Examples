@@ -1,6 +1,6 @@
 
 /*
- * Auto generated Run-Time-Environment Component Configuration File
+ * Auto generated Run-Time-Environment Configuration File
  *      *** Do not modify ! ***
  *
  * Project: 'hello_w' 
@@ -9,6 +9,7 @@
 
 #ifndef RTE_COMPONENTS_H
 #define RTE_COMPONENTS_H
+
 
 
 #endif /* RTE_COMPONENTS_H */

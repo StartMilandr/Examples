@@ -21,8 +21,8 @@
  *-----------------------------------------------------------------------------
  */
 
-#ifndef __SYSTEM_CM4IKMCU_H
-#define __SYSTEM_CM4IKMCU_H
+#ifndef __SYSTEM_MLDR124_H
+#define __SYSTEM_MLDR124_H
 
 extern uint32_t SystemFrequency;                   /*!< System Clock Frequency (Core Clock) */
 

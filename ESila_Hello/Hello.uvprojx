@@ -33,8 +33,8 @@
           <SLE66CMisc></SLE66CMisc>
           <SLE66AMisc></SLE66AMisc>
           <SLE66LinkerMisc></SLE66LinkerMisc>
-          <SFDFile></SFDFile>
-          <bCustSvd>0</bCustSvd>
+          <SFDFile>.\MLDR124.SFR</SFDFile>
+          <bCustSvd>1</bCustSvd>
           <UseEnv>0</UseEnv>
           <BinPath></BinPath>
           <IncludePath></IncludePath>
@@ -48,14 +48,14 @@
             <NotGenerated>0</NotGenerated>
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
-          <OutputDirectory>.\out\</OutputDirectory>
+          <OutputDirectory>.\out_RAM\</OutputDirectory>
           <OutputName>Hello_RAM</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>0</CreateHexFile>
           <DebugInformation>1</DebugInformation>
           <BrowseInformation>1</BrowseInformation>
-          <ListingPath>.\lst\</ListingPath>
+          <ListingPath>.\lst_RAM\</ListingPath>
           <HexFormatSelection>1</HexFormatSelection>
           <Merge32K>0</Merge32K>
           <CreateBatchFile>0</CreateBatchFile>
@@ -392,6 +392,16 @@
               <FileType>2</FileType>
               <FilePath>.\env\startup.s</FilePath>
             </File>
+            <File>
+              <FileName>mldr124_clk.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\env\mldr124_clk.c</FilePath>
+            </File>
+            <File>
+              <FileName>mldr124_port.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\env\mldr124_port.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -403,6 +413,7 @@
       <TargetName>FLASH</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
+      <pCCUsed>5060750::V5.06 update 6 (build 750)::ARMCC</pCCUsed>
       <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>
@@ -425,8 +436,8 @@
           <SLE66CMisc></SLE66CMisc>
           <SLE66AMisc></SLE66AMisc>
           <SLE66LinkerMisc></SLE66LinkerMisc>
-          <SFDFile>$$Device:ARMCM4$Device\ARM\SVD\ARMCM4.svd</SFDFile>
-          <bCustSvd>0</bCustSvd>
+          <SFDFile>.\MLDR124.SFR</SFDFile>
+          <bCustSvd>1</bCustSvd>
           <UseEnv>0</UseEnv>
           <BinPath></BinPath>
           <IncludePath></IncludePath>
@@ -440,14 +451,14 @@
             <NotGenerated>0</NotGenerated>
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
-          <OutputDirectory>.\</OutputDirectory>
+          <OutputDirectory>.\out_FLASH\</OutputDirectory>
           <OutputName>Hello_Flash</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>0</CreateHexFile>
           <DebugInformation>1</DebugInformation>
           <BrowseInformation>1</BrowseInformation>
-          <ListingPath>.\</ListingPath>
+          <ListingPath>.\lst_FLASH\</ListingPath>
           <HexFormatSelection>1</HexFormatSelection>
           <Merge32K>0</Merge32K>
           <CreateBatchFile>0</CreateBatchFile>
@@ -783,6 +794,16 @@
               <FileName>startup.s</FileName>
               <FileType>2</FileType>
               <FilePath>.\env\startup.s</FilePath>
+            </File>
+            <File>
+              <FileName>mldr124_clk.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\env\mldr124_clk.c</FilePath>
+            </File>
+            <File>
+              <FileName>mldr124_port.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\env\mldr124_port.c</FilePath>
             </File>
           </Files>
         </Group>

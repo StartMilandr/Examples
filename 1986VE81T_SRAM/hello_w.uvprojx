@@ -11,11 +11,12 @@
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
       <pCCUsed>5060422::V5.06 update 4 (build 422)::ARMCC</pCCUsed>
+      <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>
           <Device>MDR32F8</Device>
           <Vendor>Milandr</Vendor>
-          <PackID>Keil.MDR32F8.0.1</PackID>
+          <PackID>Keil.MDR1986VE8T.0.3</PackID>
           <PackURL>http://www.keil.com/pack/</PackURL>
           <Cpu>IRAM(0x20000000,0x6000) IROM(0x20006000,0x2000) CPUTYPE("Cortex-M4") CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
@@ -132,7 +133,7 @@
             <UseExternalTool>0</UseExternalTool>
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>1</UpdateFlashBeforeDebugging>
-            <Capability>0</Capability>
+            <Capability>1</Capability>
             <DriverSelection>-1</DriverSelection>
           </Flash1>
           <bUseTDR>1</bUseTDR>
@@ -183,6 +184,7 @@
             <hadXRAM>0</hadXRAM>
             <uocXRam>0</uocXRam>
             <RvdsVP>0</RvdsVP>
+            <RvdsMve>0</RvdsMve>
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
@@ -323,6 +325,7 @@
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>1</uC99>
+            <uGnu>0</uGnu>
             <useXO>0</useXO>
             <v6Lang>1</v6Lang>
             <v6LangP>1</v6LangP>
@@ -430,8 +433,24 @@
     <files>
       <file attr="config" category="source" name="Libraries\CMSIS\CM4\DeviceSupport\MDR32F8\startup\arm\startup_1986ve8t.s" version="0.0.1">
         <instance index="0">RTE\Device\MDR32F8\startup_1986ve8t.s</instance>
-        <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="0.0.1" condition="CON_MDR1986VE8"/>
-        <package name="MDR32F8" schemaVersion="1.2" url="http://www.keil.com/pack/" vendor="Keil" version="0.1"/>
+        <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="0.3" condition="CON_MDR1986VE8"/>
+        <package name="MDR1986VE8T" schemaVersion="1.2" url="http://www.keil.com/pack/" vendor="Keil" version="0.3"/>
+        <targetInfos>
+          <targetInfo name="Target 1"/>
+        </targetInfos>
+      </file>
+      <file attr="config" category="source" name="Libraries\CMSIS\CM4\DeviceSupport\MDR32F8\startup\arm\system_1986ve8t.c">
+        <instance index="0">RTE\Device\MDR32F8\system_1986ve8t.c</instance>
+        <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="0.3" condition="CON_MDR1986VE8"/>
+        <package name="MDR1986VE8T" schemaVersion="1.2" url="http://www.keil.com/pack/" vendor="Keil" version="0.3"/>
+        <targetInfos>
+          <targetInfo name="Target 1"/>
+        </targetInfos>
+      </file>
+      <file attr="config" category="header" name="Libraries\CMSIS\CM4\DeviceSupport\MDR32F8\startup\arm\system_1986ve8t.h">
+        <instance index="0">RTE\Device\MDR32F8\system_1986ve8t.h</instance>
+        <component Cclass="Device" Cgroup="Startup" Cvendor="Keil" Cversion="0.3" condition="CON_MDR1986VE8"/>
+        <package name="MDR1986VE8T" schemaVersion="1.2" url="http://www.keil.com/pack/" vendor="Keil" version="0.3"/>
         <targetInfos>
           <targetInfo name="Target 1"/>
         </targetInfos>
