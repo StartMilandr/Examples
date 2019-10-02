@@ -119,9 +119,8 @@ void UARTConfig()
 void UART1_Handler()
 {
 	MDR_UART1->ICR = 0x10;
-	uint32_t i, temp[16];
-	for (i=0;i<16; i++)
-	temp[i]=MDR_UART1->DR;
+	uint32_t i;
+	
 	
 	switch (MDR_UART1->DR)
 	{
